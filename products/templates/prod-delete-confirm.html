@@ -5,20 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Delete</title>
 </head>
 <body>
-  <h1>New/Update product</h1>
 
-  <form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Save</button>
-  </form>
+    <form method="POST">
+      {% csrf_token %}
+      <h2>Are you sure you want to remove {{product.description}}</h2>
+      <button type="submit">Confirm</button>
+    </form>
 
-    {% if product %}
-        <a href="{% url 'delete_product' product.id %}">Delete</a>
-    {% endif %}
+
 
 </body>
 </html>
