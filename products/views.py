@@ -16,3 +16,14 @@ def create_product(request):
         return redirect('list_products')
 
     return render(request, 'products-form.html', {'form': form})
+
+
+def update_product(request, id):
+    product = Product.objects.get(id=id)
+    form = ProductForm(request.POST or None, instance=product)  # o instance já pega o form preenchido
+
+    if form.is_valid():
+        form.save()
+        return redirect('list_products')
+
+    return render(request, 'products-form.html', {'form': form, 'product': product})
